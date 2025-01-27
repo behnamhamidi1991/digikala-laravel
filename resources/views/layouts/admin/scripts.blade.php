@@ -19,11 +19,11 @@
 <!-- END THEME GLOBAL STYLE -->
 
 <script>
-    window.addEventListener('success', function() {
+    window.addEventListener('success', function(event) {
         Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'عملیات با موفقیت انجام شد',
+            title: event.detail,
             showConfirmButton: false,
             timer: 1500
         })

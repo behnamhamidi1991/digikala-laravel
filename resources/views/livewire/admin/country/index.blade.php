@@ -17,7 +17,7 @@
                     <div class="row mb-4">
                         <div class="col-sm-12">
                             <label for="name" class="form-label">نام کشور</label>
-                            <input type="text" class="form-control" id="name" name="name"
+                            <input type="text" class="form-control" id="name" wire:model="name" name="name"
                                 placeholder="نام کشور">
                         </div>
                     </div>

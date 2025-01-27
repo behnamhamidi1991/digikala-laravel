@@ -8,6 +8,9 @@ use Livewire\Component;
 
 class Index extends Component
 {
+
+    public $name;
+
     public function submit($formData, Country $country)
     {
         $validator = Validator::make($formData, [
@@ -20,7 +23,8 @@ class Index extends Component
 
         $validator->validate();
         $country->submit($formData);
-        $this->dispatch('success');
+        $this->reset();
+        $this->dispatch('success', 'عملیات با موفقیت انجام شد');
 
     }
 
