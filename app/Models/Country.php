@@ -11,10 +11,17 @@ class Country extends Model
     protected $fillable = ['name'];
 
     
-    public function submit($formData)
+    public function submit($formData, $countryId)
     {
-        Country::query()->create([
+        Country::query()->updateOrCreate(
+         
+             [
+                'id' => $countryId,
+              ],
+
+             [
             'name' => $formData['name']
-        ]);
+              ]
+    );
     }
 }
