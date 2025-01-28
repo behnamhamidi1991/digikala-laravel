@@ -5,9 +5,12 @@ namespace App\Livewire\Admin\Country;
 use App\Models\Country;
 use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
+
+    use WithPagination;
 
     public $name;
     public $countryId;
@@ -49,7 +52,7 @@ class Index extends Component
     public function render()
     {
 
-        $countries = Country::all();
+        $countries = Country::paginate(10);
 
         return view('livewire.admin.country.index', [
             'countries' => $countries

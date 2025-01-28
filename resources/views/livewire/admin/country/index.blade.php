@@ -23,14 +23,18 @@
                     </div>
 
                     @error('name')
-                        <div class="alert alert-light-danger alert-dismissible fade show border-0 mb-4" role="alert">
+                        <div class="alert alert-light-danger alert-dismissible fade show border-0 mb-4" role="alert" wire:loading.remove>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><svg> ...
                                 </svg></button>
                             <strong>خطا ! </strong> {{ $message }} </button>
                         </div>
                     @enderror
 
-                    <button type="submit" class="btn btn-primary">ثبت</button>
+                    <button type="submit" class="btn btn-primary">
+                        <span wire:loading.remove>ثبت</span>
+                        <div class="spinner-border text-white me-2 align-self-center loader-sm" wire:loading></div>
+                        
+                    </button>
                 </form>
 
 
@@ -60,7 +64,7 @@
                         @foreach ($countries as $country)
                             <tr>
                                 <td>
-                                    {{ $loop->index + 1 }}
+                                    {{ $loop->iteration + $countries->firstItem() - 1 }}
                                 </td>
                                 <td>
                                     <div class="media">
@@ -118,6 +122,8 @@
 
                     </tbody>
                 </table>
+                {{-- Pagination --}}
+                {{$countries->links('layouts.admin.pagination')}}
             </div>
         </div>
     </div>
